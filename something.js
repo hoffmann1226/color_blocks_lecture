@@ -1,36 +1,46 @@
 $(document).ready(init);
 
-let numOfClicks = 0;
-
-let personLoggedIn = "Scott";
+let amtRedClicked = 0;
+let amtYellowClicked = 0;
+let amtGreenClicked = 0;
+let amtBlueClicked = 0;
 
 function init() {
-  $("body").prepend(`
-  <div>
-    <img src="https://media-exp1.licdn.com/dms/image/C4D03AQFaPlNHBUaSXg/profile-displayphoto-shrink_200_200/0?e=1589414400&v=beta&t=Rpsvbjrdb-VCvbBkLdJJYMAJc8aw7Fm-gzWnnyuOIs8" />
-  </div>
-  `);
-  $("body")
-    .children()
-    .first().append(`
-    <p>Phil's favorite food is mac n' cheese</p>
-  `);
+  console.log("jq loaded!");
 
-  $(".js-btn-meowButton").on("click", showIfPhilIsAwesome);
+  $(".js-btn-red").on("click", clickRed);
+  $(".js-btn-yellow").on("click", clickYellow);
+  $(".js-btn-green").on("click", clickGreen);
+  $(".js-btn-blue").on("click", clickBlue);
+
+  $(".container").append(`
+    <div class="box red"></div>
+    <div class="box yellow"></div>
+    <div class="box green"></div>
+    <div class="box blue"></div>
+  `);
 }
 
-function showIfPhilIsAwesome() {
-  if (checkIfAwesome()) {
-    console.log("Turns out, Phil is awesome");
-  } else {
-    console.log("Try again Scott!");
-  }
+function clickRed() {
+  amtRedClicked++;
+  $(".js-red-clicked").text(`Red clicked: ${amtRedClicked}`);
+  console.log("Clicked Red", amtRedClicked);
 }
 
-function checkIfAwesome() {
-  if (personLoggedIn === "Scott") {
-    return false;
-  } else if (personLoggedIn === "Phil") {
-    return true;
-  }
+function clickYellow() {
+  amtYellowClicked++;
+  $(".js-yellow-clicked").text(`Yellow clicked: ${amtYellowClicked}`);
+  console.log("Clicked Yellow", amtYellowClicked);
+}
+
+function clickGreen() {
+  amtGreenClicked++;
+  $(".js-green-clicked").text(`Green clicked: ${amtGreenClicked}`);
+  console.log("Clicked Green", amtGreenClicked);
+}
+
+function clickBlue() {
+  amtBlueClicked++;
+  $(".js-blue-clicked").text(`Blue clicked: ${amtBlueClicked}`);
+  console.log("Clicked Blue", amtBlueClicked);
 }
